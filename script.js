@@ -5,7 +5,7 @@ const calculator = document.querySelector(".calculator");
 const display = document.querySelector(".display");
 display.value = "0";
 
-const NUMS = "0123456789.";
+const NUMS = "0123456789";
 const OPERATORS = "/*-+"
 
 calculator.addEventListener("click", (event) => {
@@ -47,6 +47,18 @@ calculator.addEventListener("click", (event) => {
         calcPerformed = false;
         display.value = "0";
     }
+    else if(button === ".") {
+        if(operator === "") {
+            if(!num1.includes(".")) {
+                num1 = +num1 + ".";
+                display.value = num1;
+            }
+        }
+        else if(!num2.includes(".")) {
+            num2 = +num2 + ".";
+            display.value = num2;
+        }
+    }
     else if(button === "+/-") {
         if(num2 === "") {
             num1 = num1 === "" ? "" : num1 * -1;
@@ -57,8 +69,6 @@ calculator.addEventListener("click", (event) => {
             display.value = +num2;
         }
     }
-
-    console.log(button);
 });
 
 
